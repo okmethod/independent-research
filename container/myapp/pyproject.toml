@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "task"
+version = "0.1.0"
+description = ""
+authors = ["None"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+black = "^22.3.0"
+isort = "^5.10.1"
+mypy = "^0.931"
+pytest = "^6.2.5"
+pytest-mock = "^3.0.0"
+moto = "^2.3.1"
+
+[tool.black]
+exclude = [".venv"]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["boto3.*", "moto.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+[build-system]
+requires = ["poetry-core>=1.1.4"]
+build-backend = "poetry.core.masonry.api"
